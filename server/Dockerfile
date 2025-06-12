@@ -2,9 +2,13 @@ FROM node:20
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json tsconfig.json ./
 RUN npm install
 
 COPY . .
 
-CMD ["node", "src/index.js"]
+# Скомпилировать TypeScript в JS
+RUN npm run build
+
+# Запускаем скомпилированный JS из папки dist (если tsconfig.json правильно настроен)
+CMD ["node", "dist/index.js"]
