@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "postbuild": "mv src/build dist",
-    "build": "npx tsc &&  node -r dotenv/config -e \"require('fs').copyFileSync('./.env', './dist/.env')\"",
+    "build": "tsc && [ -f .env ] && cp .env dist/.env || echo 'no .env'",
     "dev": "nodemon --watch src --ext ts --exec \"node --no-warnings --loader ts-node/esm src/index.ts\"",
     "start": "node dist/index.js"
   },

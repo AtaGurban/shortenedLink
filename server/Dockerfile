@@ -6,7 +6,7 @@ COPY package*.json tsconfig.json ./
 RUN npm install
 
 COPY . .
-
+COPY .env .env
 # Скомпилировать TypeScript в JS
 RUN npm run build
 
