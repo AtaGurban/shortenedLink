@@ -11,7 +11,6 @@ import errorHandler from "../utils/erronHandler.ts";
 class ShortenedLinkControllers {
   async createShortenedLink(req: Request, res: Response, next: NextFunction) {
     const parsed = createShortenedLinkSchema.safeParse(req.body);
-
     if (!parsed.success) {
       return next(ApiError.badRequest("Incomplete data"));
     }
@@ -23,8 +22,7 @@ class ShortenedLinkControllers {
     return res.json(data);
   }
   async getShortenedLinks(req: Request, res: Response, next: NextFunction) {
-    const parsed = getShortenedLinksQuerySchema.safeParse(req.query);
-
+    const parsed = getShortenedLinksQuerySchema.safeParse(req.query);   
     if (!parsed.success) {
       return next(ApiError.internal("Internal error"));
     }

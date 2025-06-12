@@ -64,13 +64,13 @@ class ShortenedLinkDao {
           model: ShortenedLinkClick,
           as: "clicks",
           limit: 5,
-          attributes: ["id", "ip"],
+          attributes: ["id", "ip", "createdAt"],
         });
       }
       const shortenedLink = await ShortenedLink.findOne({
         where: { alias },
         include: includeModels,
-        attributes: ["id", "alias", "originalUrl", "createdAt "],
+        attributes: ["id", "alias", "originalUrl", "createdAt"],
       }).then((data) => data && data.get({ plain: true }));
       if (!shortenedLink) {
         return { success: false, message: "Ссылка не найдена" };
@@ -105,6 +105,12 @@ class ShortenedLinkDao {
     try {
       const { originalUrl, expiresAt, alias } = data;
       const { nanoid } = await import("nanoid");
+      if (alias){
+        const checkOld = await ShortenedLink.findOne({where: {alias}, attributes: ["id"], raw: true})
+        if (checkOld){
+          return {success: false, message: "Этот алиас уже занят"}
+        }
+      }
       const currentAlias = alias ?? nanoid(8);
       const dataForSave: Partial<ShortenedLink> = {
         originalUrl,

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 
-
 export interface QueryType {
   [key: string]: string | number | Date | undefined;
 }
@@ -29,11 +28,9 @@ export const buildQueryParams = (params: QueryType) => {
   return queryParams.join("&");
 };
 
-
 export function getRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 
 export function errorHandler(error: unknown) {
   console.log(error);
@@ -44,8 +41,6 @@ export function errorHandler(error: unknown) {
   }
 }
 
-
-
 export const handlerAxiosError = (error: unknown) => {
   if (axios.isAxiosError(error)) {
     return error?.response?.data.message;
@@ -53,7 +48,6 @@ export const handlerAxiosError = (error: unknown) => {
     return "Произошла непредвиденная ошибка";
   }
 };
-
 
 export async function sleep(timeout: number) {
   return await new Promise((res) => setTimeout(res, timeout));
@@ -67,4 +61,14 @@ export function copyToClipboardFallback(text: string): boolean {
   const success = document.execCommand("copy");
   document.body.removeChild(textarea);
   return success;
+}
+
+export function isHttpUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    return ["http:", "https:"].includes(parsed.protocol);
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
 }

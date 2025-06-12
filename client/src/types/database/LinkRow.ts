@@ -3,8 +3,9 @@ import { DatabaseModelRow } from "./DatabaseModelRow";
 export interface LinkRow extends DatabaseModelRow{
   originalUrl: string
   alias: string
-  expiresAt: Date | null
+  expiresAt: string | null
   clicks?: LinkClickRow[]
+  clickCount?: number
 }
 
 export interface LinkClickRow extends DatabaseModelRow{
@@ -13,5 +14,5 @@ export interface LinkClickRow extends DatabaseModelRow{
 }
 
 export interface LinksResponse{
-  count: number, rows: LinkRow
+  count: number, rows: LinkRow[]
 }

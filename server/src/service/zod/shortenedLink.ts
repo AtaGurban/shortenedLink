@@ -1,9 +1,19 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const createShortenedLinkSchema = z.object({
-  originalUrl: z.string().url(),
-  alias: z.string().min(3).max(20).optional(),
-  expiresAt: z.string().datetime().optional(),
+  originalUrl: z
+    .string()
+    .trim()
+    .url()
+    .transform((val) => val?.toLowerCase()),
+  alias: z
+    .string()
+    .trim()
+    .min(3)
+    .max(20)
+    .optional()
+    .transform((val) => val?.toLowerCase()),
+  expiresAt: z.coerce.date().optional(),
 });
 
 export type CreateShortenedLinkBody = z.infer<typeof createShortenedLinkSchema>;

@@ -1,6 +1,6 @@
 export interface CreateShortenedLinkBody {
   originalUrl: string;
-  expiresAt: string | Date;
+  expiresAt: string;
   alias?: string;
 }
 

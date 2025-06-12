@@ -1,27 +1,29 @@
 import { create } from "zustand";
-import { LinkRow } from "../types/database/LinkRow";
+import { LinkRow, LinksResponse } from "../types/database/LinkRow";
 import { persist } from "zustand/middleware";
 import { CreateShortenedLinkBody } from "../types/bodies/ShortenedLink/ShortenedLink";
 
 interface ShortenedLinkStoreType {
-  shortenedLinkList: LinkRow[];
+  shortenedLinkList: LinksResponse;
   currentItem: null | LinkRow;
   addModalVisible: boolean;
   infoModalVisible: boolean;
+  loading: boolean;
   createLinkBody: null | Partial<CreateShortenedLinkBody>;
   setCreateLinkBody: (
     createLinkBody: null | Partial<CreateShortenedLinkBody>
   ) => void;
   setCurrentItem: (currentItem: LinkRow) => void;
   setInfoModalVisible: (infoModalVisible: boolean) => void;
+  setLoading: (loading: boolean) => void;
   setAddModalVisible: (addModalVisible: boolean) => void;
-  setShortenedLinkList: (shortenedLinkList: LinkRow[]) => void;
+  setShortenedLinkList: (shortenedLinkList: LinksResponse) => void;
 }
 
 const shortenedLinkStore = create<ShortenedLinkStoreType>()(
   persist(
     (set, get) => ({
-      shortenedLinkList: [],
+      shortenedLinkList: {count: 0, rows: []},
       currentItem: null,
       setCreateLinkBody: (createLinkBody) => {
         if (!createLinkBody) {
@@ -35,8 +37,10 @@ const shortenedLinkStore = create<ShortenedLinkStoreType>()(
       setShortenedLinkList: (shortenedLinkList) => set({ shortenedLinkList }),
       setInfoModalVisible: (infoModalVisible) => set({ infoModalVisible }),
       setAddModalVisible: (addModalVisible) => set({ addModalVisible }),
+      setLoading: (loading) => set({ loading }),
       addModalVisible: false,
       infoModalVisible: false,
+      loading: false,
       createLinkBody: null,
     }),
     {

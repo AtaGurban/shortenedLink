@@ -1,9 +1,9 @@
 import { $host } from ".";
-import { CreateShortenedLinkBody, GetShortenedLinksParams } from "../types/bodies/ShortenedLink/ShortenedLink";
+import { GetShortenedLinksParams } from "../types/bodies/ShortenedLink/ShortenedLink";
 import { LinkRow, LinksResponse } from "../types/database/LinkRow";
 import { buildQueryParams } from "../utils/func";
 
-export const createShortenedLink = async (item: CreateShortenedLinkBody) => {
+export const createShortenedLink = async (item: FormData) => {
   const { data } = await $host.post("shorten", item);
   return data;
 };
