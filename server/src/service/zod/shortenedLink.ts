@@ -1,11 +1,7 @@
 import { z } from "zod";
 
 export const createShortenedLinkSchema = z.object({
-  originalUrl: z
-    .string()
-    .trim()
-    .url()
-    .transform((val) => val?.toLowerCase()),
+  originalUrl: z.string().trim().url(),
   alias: z
     .string()
     .trim()
