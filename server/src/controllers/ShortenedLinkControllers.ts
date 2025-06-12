@@ -1,12 +1,12 @@
 import { NextFunction, Response, Request } from "express";
-import ApiError from "../error/ApiError.ts";
+import ApiError from "../error/ApiError";
 import {
   createShortenedLinkSchema,
   getShortenedLinksQuerySchema,
-} from "../service/zod/shortenedLink.ts";
-import shortenedLinkDao from "../dao/ShortenedLinkDao/ShortenedLinkDao.ts";
-import { ShortenedLinkClick } from "../models/ShortenedLinkModels.ts";
-import errorHandler from "../utils/erronHandler.ts";
+} from "../service/zod/shortenedLink";
+import shortenedLinkDao from "../dao/ShortenedLinkDao/ShortenedLinkDao";
+import { ShortenedLinkClick } from "../models/ShortenedLinkModels";
+import errorHandler from "../utils/erronHandler";
 
 class ShortenedLinkControllers {
   async createShortenedLink(req: Request, res: Response, next: NextFunction) {

@@ -1,5 +1,5 @@
 import { Router } from "express"
-import shortenedLinkRouter from "./shortenedLinkRouter.ts"
+import shortenedLinkRouter from "./shortenedLinkRouter"
 
 
 const router = Router()

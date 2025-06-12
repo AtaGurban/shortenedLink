@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { ShortenedLinkClick } from "../models/ShortenedLinkModels.ts";
-import shortenedLinkControllers from "../controllers/ShortenedLinkControllers.ts";
-import ApiError from "../error/ApiError.ts";
-import shortenedLinkDao from "../dao/ShortenedLinkDao/ShortenedLinkDao.ts";
-import { sleep } from "../utils/commonFunc.ts";
+import { ShortenedLinkClick } from "../models/ShortenedLinkModels";
+import shortenedLinkControllers from "../controllers/ShortenedLinkControllers";
+import ApiError from "../error/ApiError";
+import shortenedLinkDao from "../dao/ShortenedLinkDao/ShortenedLinkDao";
+import { sleep } from "../utils/commonFunc";
 
 jest.mock("../dao/ShortenedLinkDao/ShortenedLinkDao.ts");
 jest.mock("../models/ShortenedLinkModels.ts");

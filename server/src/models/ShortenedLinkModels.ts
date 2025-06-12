@@ -1,5 +1,5 @@
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../db.ts";
+import sequelize from "../db";
 
 class ShortenedLink extends Model {
   declare id: number;

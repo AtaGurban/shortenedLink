@@ -1,13 +1,13 @@
 import {
   ShortenedLink,
   ShortenedLinkClick,
-} from "../../models/ShortenedLinkModels.ts";
-import redisClient, { redisTime } from "../../service/redis/redis.ts";
+} from "../../models/ShortenedLinkModels";
+import redisClient, { redisTime } from "../../service/redis/redis";
 import {
   CreateShortenedLinkBody,
   GetShortenedLinks,
-} from "../../service/zod/shortenedLink.ts";
-import errorHandler from "../../utils/erronHandler.ts";
+} from "../../service/zod/shortenedLink";
+import errorHandler from "../../utils/erronHandler";
 import { Includeable } from "sequelize";
 
 class ShortenedLinkDao {

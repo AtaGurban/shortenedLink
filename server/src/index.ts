@@ -1,15 +1,15 @@
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 dotenv.config();
-import express from "express";
+import * as express from "express";
 import * as http from "http";
 import { Express } from "express";
-import cors from "cors";
-import ErrorHandlingMiddleware from "./middleware/ErrorHandlingMiddleware.ts";
-import sequelize from "./db.ts";
-import router from "./routes/index.ts";
-import redisClient from "./service/redis/redis.ts";
-import { PORT } from "./utils/envConst.ts";
-import fileUpload from "express-fileupload"
+import * as cors from "cors";
+import ErrorHandlingMiddleware from "./middleware/ErrorHandlingMiddleware";
+import sequelize from "./db";
+import router from "./routes/index";
+import redisClient from "./service/redis/redis";
+import { PORT } from "./utils/envConst";
+import * as fileUpload from "express-fileupload"
 const app: Express = express();
 const port: number = parseInt(PORT || "8080", 10);
 

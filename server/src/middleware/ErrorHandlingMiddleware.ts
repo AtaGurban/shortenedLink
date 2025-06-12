@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import ApiError from '../error/ApiError.ts';
+import ApiError from '../error/ApiError';
 
 export default function ErrorHandlingMiddleware(err: any, req: Request, res: Response, next: NextFunction) {
   if (err instanceof ApiError) {

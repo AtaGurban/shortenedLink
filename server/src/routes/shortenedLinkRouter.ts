@@ -1,6 +1,6 @@
 import { Router } from "express";
-import tryCatch from "../utils/tryCatch.ts";
-import shortenedLinkControllers from "../controllers/ShortenedLinkControllers.ts";
+import tryCatch from "../utils/tryCatch";
+import shortenedLinkControllers from "../controllers/ShortenedLinkControllers";
 
 
 const shortenedLinkRouter = Router();
